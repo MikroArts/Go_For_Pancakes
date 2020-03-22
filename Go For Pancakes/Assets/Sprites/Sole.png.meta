@@ -1,0 +1,363 @@
+fileFormatVersion: 2
+guid: 51ab72a45b2fe474b80b1a9c013a25a5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -272461000844300424
+    second: Sole_0
+  - first:
+      213: -9013363702464344915
+    second: Sole_1
+  - first:
+      213: -5957810752882330861
+    second: Sole_2
+  - first:
+      213: -2581264988238363938
+    second: Sole_3
+  - first:
+      213: 1680746100920605636
+    second: Sole_4
+  - first:
+      213: -6888426489446695343
+    second: Sole_5
+  - first:
+      213: 9050547612591249078
+    second: Sole_6
+  - first:
+      213: 5128490869297194640
+    second: Sole_7
+  - first:
+      213: -175832614902688675
+    second: Sole_8
+  - first:
+      213: 3006067070451868955
+    second: Sole_9
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sole_0
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 1337
+        width: 308
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3fda16d898dd714a9421af40f0a6ba9
+      internalID: -272461000844300424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_1
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 956
+        width: 774
+        height: 950
+      alignment: 9
+      pivot: {x: 0.9345552, y: 0.04868601}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e79e8bac2940d47865fa99009cd2de
+      internalID: -9013363702464344915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_2
+      rect:
+        serializedVersion: 2
+        x: 1434
+        y: 972
+        width: 653
+        height: 841
+      alignment: 9
+      pivot: {x: 0.562262, y: 0.9482792}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aebf80a7686c25944b0973d65c2051d3
+      internalID: -5957810752882330861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 970
+        width: 318
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1431ebe13020dd241a5e9e8fb563c812
+      internalID: -2581264988238363938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_4
+      rect:
+        serializedVersion: 2
+        x: 1749
+        y: 901
+        width: 42
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b085a0b02f3d6af4f9fd4f2ecc6cc80c
+      internalID: 1680746100920605636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_5
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 173
+        width: 288
+        height: 701
+      alignment: 9
+      pivot: {x: 0.7566741, y: 0.9481727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa53910601221104d9016f9a92ae8793
+      internalID: -6888426489446695343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_6
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 677
+        width: 439
+        height: 147
+      alignment: 9
+      pivot: {x: 0.07903093, y: 0.80172294}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 146c334ab36cf404b8b126c8b2efa84d
+      internalID: 9050547612591249078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_7
+      rect:
+        serializedVersion: 2
+        x: 1089
+        y: 345
+        width: 275
+        height: 433
+      alignment: 9
+      pivot: {x: 0.17743075, y: 0.9182662}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b02fe7b48797484ea9e411dea0ffda8
+      internalID: 5128490869297194640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_8
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 101
+        width: 671
+        height: 784
+      alignment: 9
+      pivot: {x: 0.5330501, y: 0.042701196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a9d044d3ffb8d8448cddfdb2951c15c
+      internalID: -175832614902688675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sole_9
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 380
+        width: 285
+        height: 246
+      alignment: 9
+      pivot: {x: 0.8890638, y: 0.109355025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212eac736332a4842afc282a47605777
+      internalID: 3006067070451868955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0a93b6d0f6f2fe743add1248818be0ea
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
