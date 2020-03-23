@@ -8,8 +8,7 @@ public class PoliceMan : MonoBehaviour
     public float speed;
     public float distance;
     bool moveRight = true;
-
-    Player target;
+    
     public Transform groundCheck;
     Animator anim;
 
@@ -17,7 +16,6 @@ public class PoliceMan : MonoBehaviour
     {        
         anim = GetComponent<Animator>();
         anim.SetBool("isWalk", true);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
      
     void Update()
@@ -37,14 +35,6 @@ public class PoliceMan : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, -180, 0);
                 moveRight = true;
             }
-        }
-    }
-     
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Player"))
-        {
-            target.GetComponent<Player>().health--;
         }
     }
 }

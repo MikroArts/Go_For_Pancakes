@@ -8,8 +8,7 @@ public class Granny : MonoBehaviour
     public float speed;
     public float distance;
     bool moveRight = true;
-
-    Player target;
+    
     public Transform groundCheck;
     Animator anim;
 
@@ -17,7 +16,6 @@ public class Granny : MonoBehaviour
     {        
         anim = GetComponent<Animator>();
         anim.SetBool("isWalk", true);
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
      
     void Update()
@@ -38,13 +36,5 @@ public class Granny : MonoBehaviour
                 moveRight = true;
             }
         }
-    }
-     
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Player"))
-        {
-            target.GetComponent<Player>().health--;
-        }
-    }
+    }     
 }

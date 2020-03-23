@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 942332874}
   m_Layer: 0
   m_Name: Granny
-  m_TagString: Untagged
+  m_TagString: Granny
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 00848de99331194498410e16567b114c, type: 2}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
