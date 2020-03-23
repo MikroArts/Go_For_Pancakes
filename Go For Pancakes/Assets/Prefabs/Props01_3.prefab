@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6384079318829328909}
   - component: {fileID: 6384079318829328906}
   - component: {fileID: 6384079318829328907}
+  - component: {fileID: 3216446160683249487}
   m_Layer: 8
   m_Name: Props01_3
   m_TagString: Untagged
@@ -92,7 +93,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -0.00000047683716, y: 2.5035357}
   m_SpriteTilingProperty:
@@ -107,3 +108,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.4454336, y: 0.51781917}
   m_EdgeRadius: 0
+--- !u!251 &3216446160683249487
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6384079318829328904}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

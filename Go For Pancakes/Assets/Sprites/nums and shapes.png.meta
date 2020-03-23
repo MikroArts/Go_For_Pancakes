@@ -1,34 +1,49 @@
 fileFormatVersion: 2
-guid: 4c0f47e9695c3c34cb6b683a614511ef
+guid: 5f99b12050ec56f4e8ddf349efca66ea
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7514851129251947544
-    second: Props03_0
+      213: -8206379292684454978
+    second: nums and shapes_0
   - first:
-      213: 858048505612337673
-    second: Props03_1
+      213: 5311669526860768362
+    second: nums and shapes_1
   - first:
-      213: -5871562515407759347
-    second: Props03_2
+      213: -7411666316100291697
+    second: nums and shapes_2
   - first:
-      213: 5385356870915217738
-    second: Props03_3
+      213: 4588581201947218955
+    second: nums and shapes_3
   - first:
-      213: 5267612235819824445
-    second: Props03_4
+      213: -4326855557302924490
+    second: nums and shapes_4
   - first:
-      213: 1661259545964486691
-    second: Props03_5
+      213: 3876297794460639015
+    second: nums and shapes_5
   - first:
-      213: -6159520353895682867
-    second: Props03_6
+      213: -344547192904945474
+    second: nums and shapes_6
   - first:
-      213: 304804715849233575
-    second: Props03_7
+      213: 4595200626845313009
+    second: nums and shapes_7
   - first:
-      213: 8787140895906362811
-    second: Props03_8
+      213: 8317872395575702243
+    second: nums and shapes_8
+  - first:
+      213: -6018982571811098531
+    second: nums and shapes_9
+  - first:
+      213: 134216207774390598
+    second: nums and shapes_10
+  - first:
+      213: -2287223523539498427
+    second: nums and shapes_11
+  - first:
+      213: 6186665780727080924
+    second: nums and shapes_12
+  - first:
+      213: -5780716749132833423
+    second: nums and shapes_13
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -72,7 +87,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -133,13 +148,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Props03_0
+      name: nums and shapes_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 198
-        width: 1067
-        height: 892
+        x: 3
+        y: 140
+        width: 94
+        height: 88
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0deb3d7b7f53bc478f6c9973f96f87f
-      internalID: 7514851129251947544
+      spriteID: 3cb698c5941fc5949babb697b2b6e20b
+      internalID: -8206379292684454978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_1
+      name: nums and shapes_1
       rect:
         serializedVersion: 2
-        x: 1326
-        y: 231
-        width: 651
-        height: 1087
+        x: 155
+        y: 169
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +183,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cd12fac488696543b8f9920a50f6bba
-      internalID: 858048505612337673
+      spriteID: b231fd096ff72ce4eaea0dee5f1ad302
+      internalID: 5311669526860768362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_2
+      name: nums and shapes_2
       rect:
         serializedVersion: 2
-        x: 2024
-        y: 243
-        width: 393
-        height: 321
+        x: 259
+        y: 144
+        width: 83
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,20 +204,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b35bde3bf053f847a482fcb60d6a386
-      internalID: -5871562515407759347
+      spriteID: 5710825413a761e408fa7c895d848325
+      internalID: -7411666316100291697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_3
+      name: nums and shapes_3
       rect:
         serializedVersion: 2
-        x: 2506
-        y: 240
-        width: 773
-        height: 1069
+        x: 394
+        y: 154
+        width: 31
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3590550007c7ad4429d099c613f9394a
-      internalID: 5385356870915217738
+      spriteID: db711dbeb6bc357429d57e511be872f4
+      internalID: 4588581201947218955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_4
+      name: nums and shapes_4
       rect:
         serializedVersion: 2
-        x: 3362
-        y: 267
-        width: 210
-        height: 286
+        x: 487
+        y: 141
+        width: 74
+        height: 79
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f8f0a304cfd4854ca8344cec382e0d0
-      internalID: 5267612235819824445
+      spriteID: 8555f7161d6b0fc43a505ea0115896c0
+      internalID: -4326855557302924490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_5
+      name: nums and shapes_5
       rect:
         serializedVersion: 2
-        x: 3672
-        y: 187
-        width: 684
-        height: 1300
+        x: 610
+        y: 138
+        width: 77
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,20 +267,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0722499711d36c248b69b311efc1c2d0
-      internalID: 1661259545964486691
+      spriteID: 2ff0eea38b94fe645901d65f721991d8
+      internalID: 3876297794460639015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_6
+      name: nums and shapes_6
       rect:
         serializedVersion: 2
-        x: 4434
-        y: 201
-        width: 164
-        height: 305
+        x: 705
+        y: 124
+        width: 89
+        height: 92
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,20 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 540af8e570b784d41b7f10dffc371596
-      internalID: -6159520353895682867
+      spriteID: dec3aa1817ac9c04eab9cf14a96514a2
+      internalID: -344547192904945474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_7
+      name: nums and shapes_7
       rect:
         serializedVersion: 2
-        x: 4667
-        y: 212
-        width: 438
-        height: 357
+        x: 19
+        y: 28
+        width: 40
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -294,20 +309,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5002151189d8854ab085d320c929f43
-      internalID: 304804715849233575
+      spriteID: 01b97e57333f60d40ab4d327aee50e98
+      internalID: 4595200626845313009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Props03_8
+      name: nums and shapes_8
       rect:
         serializedVersion: 2
-        x: 5202
-        y: 171
-        width: 257
-        height: 623
+        x: 88
+        y: 14
+        width: 33
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -315,8 +330,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e450caafb010c09439e2835af08a0387
-      internalID: 8787140895906362811
+      spriteID: 871728192192fce44889e7dcca911231
+      internalID: 8317872395575702243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nums and shapes_9
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 27
+        width: 43
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496b962309b037c489899fe4d3408fc6
+      internalID: -6018982571811098531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nums and shapes_10
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 28
+        width: 54
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67226a108f2de7f4ca54087445496306
+      internalID: 134216207774390598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nums and shapes_11
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 32
+        width: 39
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83689df110858c74497d7a638cc97cf3
+      internalID: -2287223523539498427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nums and shapes_12
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 39
+        width: 42
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85c0cbf643cbb9418efad34dce68d7a
+      internalID: 6186665780727080924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: nums and shapes_13
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 35
+        width: 45
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c488d2e860541a841a7d179c0e06a7d0
+      internalID: -5780716749132833423
       vertices: []
       indices: 
       edges: []
@@ -324,7 +444,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6fdf376e8772d254b8832fe44bbf8a8a
+    spriteID: 9a0028eb51e02494196e89b17fc17356
     internalID: 0
     vertices: []
     indices: 

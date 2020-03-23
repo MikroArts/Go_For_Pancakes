@@ -460,7 +460,7 @@ Rigidbody2D:
   m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &612102892
@@ -475,17 +475,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29448722f94be5e44a35c1beec444966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 7
+  numOfHearts: 7
+  hearts:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  heart: {fileID: 2296621432761925357, guid: 0d9856a4a28ff3b44af2870abfd46749, type: 3}
   lives: 3
   points: 0
-  camSmoothSpeed: 5
   jumpForce: 17
   speed: 350
+  particles:
+  - {fileID: 2063926467613678355, guid: dd549851afe78db4f837ca11bc82cc33, type: 3}
+  - {fileID: 2063926467613678355, guid: 73ee98f718b9c314b90c401f2fb6cab6, type: 3}
+  - {fileID: 2063926467613678355, guid: 50266fc3ab7454144bf9e72135769362, type: 3}
   groundCheck: {fileID: 418260478}
   checkRadius: 1
   ground:
     serializedVersion: 2
     m_Bits: 256
+  timer: 0
+  smoothSpeed: 0.15
+  cam: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!70 &1015168029
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public Sprite heart;
     public int lives = 3;
     public int points;
+    public Text livesText;
 
     Rigidbody2D rb;
     Animator anim;
@@ -26,13 +27,19 @@ public class Player : MonoBehaviour
     public float checkRadius;
     public LayerMask ground;
 
+    private bool isCollide;
+    public float timer;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();     
+        anim = GetComponent<Animator>();
+        
     }
     void Update()
     {
+        
         numOfHearts = health;        
         for (int i = 0; i < hearts.Length; i++)
         {            
@@ -45,14 +52,36 @@ public class Player : MonoBehaviour
                 hearts[i].enabled = false;
             }
         }
-        if (health <= 0)
+
+        if (lives >= 0)
         {
-            print("Dead");
+            if (health <= 0)
+            {
+                lives--;
+                health += 7;
+            }
+            else
+                livesText.text = "x" + lives;
         }
+        else
+        {
+            livesText.text = "x0";
+            health = 0;
+            print("Game Over");
+            return;
+        }
+
         Jump();
+
+        if (isCollide)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+                timer = 0;
+        }
     }
     void FixedUpdate()
-    {        
+    {
         Move();
     }
 
@@ -67,7 +96,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);
+            rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);            
             anim.SetBool("isRide", true);
             if (moveInput < 0)
                 transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
@@ -92,15 +121,35 @@ public class Player : MonoBehaviour
         }
         if (col.CompareTag("Cop"))
         {
-            health -= col.GetComponent<PoliceMan>().damage;
-            Instantiate(particles[1], col.transform.position, Quaternion.identity);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+            if (timer <= 0)
+            {
+                isCollide = true;
+                timer = 1f;
+
+                if (health >= 0 && lives > -1)
+                    health -= col.GetComponent<PoliceMan>().damage;
+                else
+                    return;
+                Instantiate(particles[1], col.transform.position, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+            }            
         }
         if (col.CompareTag("Granny"))
         {
-            health -= col.GetComponent<Granny>().damage;
-            Instantiate(particles[2], col.transform.position, Quaternion.identity);
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+            if (timer <= 0)
+            {
+                isCollide = true;
+                timer = 1f;
+
+                if (health >= 0 && lives > -1)
+                    health -= col.GetComponent<Granny>().damage;
+                else
+                    return;
+
+                Instantiate(particles[2], col.transform.position, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+            }
+            
         }
     }
 }
