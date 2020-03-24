@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114725872}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 817189781585933021}
   - component: {fileID: 942332874}
   - component: {fileID: 5501669556244630592}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Granny
   m_TagString: Granny
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 736595135142494650}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.48, z: 0}
-  m_LocalScale: {x: 0.17196447, y: 0.17196447, z: 0.17196447}
+  m_LocalScale: {x: 0.17196447, y: 0.1719645, z: -0.1719645}
   m_Children:
   - {fileID: 7607013173948795806}
   - {fileID: 5902833792227660503}
@@ -85,9 +85,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 00848de99331194498410e16567b114c, type: 2}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &1630049278
 Animator:
@@ -186,7 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6290622653270316973}
   - component: {fileID: 6924877737243402487}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902833792227660503}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -301,7 +301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3319049510317434325}
   - component: {fileID: 173166859801696702}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2192935295466617311}
   - component: {fileID: 4935520214127918946}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: L_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371377424742514732}
   - component: {fileID: 800063879374956908}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: R_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6880483303550841046}
   - component: {fileID: 7400045874751981900}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7607013173948795806}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -652,7 +652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052454256617564269}
   - component: {fileID: 3230724344006448382}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

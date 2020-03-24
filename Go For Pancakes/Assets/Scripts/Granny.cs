@@ -36,5 +36,21 @@ public class Granny : MonoBehaviour
                 moveRight = true;
             }
         }
-    }     
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Cop") || col.CompareTag("Untagged") || col.CompareTag("Granny"))
+        {
+            if (moveRight)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                moveRight = false;
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                moveRight = true;
+            }
+        }
+    }
 }

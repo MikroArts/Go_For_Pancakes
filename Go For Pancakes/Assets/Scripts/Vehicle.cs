@@ -5,8 +5,8 @@ using UnityEngine;
 public class Vehicle : MonoBehaviour
 {
     public float speed;
-    float timer = 15f;
-    void Update()
+    float timer = 35f;
+    void FixedUpdate()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
         timer -= Time.deltaTime;

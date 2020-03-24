@@ -37,4 +37,20 @@ public class PoliceMan : MonoBehaviour
             }
         }
     }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Granny") || col.CompareTag("Untagged") || col.CompareTag("Cop"))
+        {
+            if (moveRight)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                moveRight = false;
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                moveRight = true;
+            }
+        }
+    }
 }

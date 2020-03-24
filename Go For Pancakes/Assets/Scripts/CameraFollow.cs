@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float smoothSpeed = .15f;
+    Transform target;
+    public float smoothSpeed = 3f;
     Animator anim;
     public Vector3 offset;
 
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void FixedUpdate()
     {
@@ -22,7 +23,7 @@ public class CameraFollow : MonoBehaviour
         {
             offset = new Vector3(0, -3f, 0);
         }
-        else//if (Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        else
         {
             offset = new Vector3(0, 1.5f, 0);
         }

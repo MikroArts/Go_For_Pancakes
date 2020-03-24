@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889125078}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5552044533635575433}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360175100829921279}
   - component: {fileID: 5544051894439745855}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   - component: {fileID: 1455662178}
   - component: {fileID: 13097588}
   - component: {fileID: 2405902495036880533}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Police
   m_TagString: Cop
   m_Icon: {fileID: 0}
@@ -197,9 +197,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &4002600612228009901
 Animator:
@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120767661117918439}
   - component: {fileID: 1425008817735497506}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214997443003358150}
   - component: {fileID: 8622957612617211120}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: L_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   m_Component:
   - component: {fileID: 927399257812323935}
   - component: {fileID: 5886421921734202861}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8840156999328380644}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -561,7 +561,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8674270083310918222}
   - component: {fileID: 6565334065563526632}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: R_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
