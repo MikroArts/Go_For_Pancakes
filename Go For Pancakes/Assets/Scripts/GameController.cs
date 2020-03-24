@@ -38,4 +38,12 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(sceneIndex);
     }
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+    internal void GameOver()
+    {
+        SceneManager.LoadScene(4);
+    }
 }

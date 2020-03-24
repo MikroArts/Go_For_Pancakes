@@ -14,5 +14,30 @@ public class Vehicle : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            col.transform.parent = transform;
+        }
+    }
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            {
+                col.transform.parent = null;
+            }
+        }
+
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            col.transform.parent = null;
+        }
     }
 }

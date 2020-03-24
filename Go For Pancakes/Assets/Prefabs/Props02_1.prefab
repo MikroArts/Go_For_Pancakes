@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6873271749626338072}
   m_Layer: 8
   m_Name: Props02_1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2549554368107009630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -18.956259, y: -12.104246, z: 0}
-  m_LocalScale: {x: 1.5604, y: 1.5604, z: 1.5604}
+  m_LocalScale: {x: 1.4199641, y: 1.4199641, z: 1.4199641}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

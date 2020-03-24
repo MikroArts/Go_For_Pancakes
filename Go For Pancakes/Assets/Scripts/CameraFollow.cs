@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     Transform target;
-    public float smoothSpeed = 3f;
+    public float smoothSpeed = 2f;
     Animator anim;
     public Vector3 offset;
 
@@ -25,7 +25,12 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            offset = new Vector3(0, 1.5f, 0);
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+                offset = new Vector3(1f, 1.5f, 0);
+            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+                offset = new Vector3(-1f, 1.5f, 0);
+            else
+                offset = new Vector3(0, 1.5f, 0);
         }
     }
     public void ShakeCam()

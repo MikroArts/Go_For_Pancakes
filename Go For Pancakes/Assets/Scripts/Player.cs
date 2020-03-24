@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
             }                
             Destroy(col.gameObject);
         }
-        if (col.CompareTag("Cop"))
+        if (col.CompareTag("Cop") && col.name != "Worker")
         {
             if (timer <= 0)
             {
@@ -165,6 +165,21 @@ public class Player : MonoBehaviour
                 Instantiate(particles[1], col.transform.position, Quaternion.identity);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
             }            
+        }
+        if (col.name == "Worker")
+        {
+            if (timer <= 0)
+            {
+                isCollide = true;
+                timer = 1f;
+
+                if (health >= 0 && lives > -1)
+                    health -= col.GetComponent<PoliceMan>().damage;
+                else
+                    return;
+                Instantiate(particles[4], col.transform.position, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+            }
         }
         if (col.CompareTag("Granny"))
         {
@@ -192,6 +207,12 @@ public class Player : MonoBehaviour
                 gc.LoadNextLevel();
             }
             
+        }
+        if (col.CompareTag("Death"))
+        {
+            lives--;
+            transform.position = new Vector3(.59f, -.4f, 0f);
+            transform.rotation = new Quaternion(0,0,0,0);
         }
     }
     void PlayParticle()

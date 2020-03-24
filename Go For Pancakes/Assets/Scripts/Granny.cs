@@ -39,7 +39,7 @@ public class Granny : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Cop") || col.CompareTag("Untagged") || col.CompareTag("Granny"))
+        if (col.CompareTag("Cop") || col.CompareTag("Untagged") || col.CompareTag("Granny") || col.CompareTag("Worker"))
         {
             if (moveRight)
             {

@@ -12,6 +12,8 @@ TagManager:
   - Car
   - Ground
   - FinishLevel
+  - Worker
+  - Death
   layers:
   - Default
   - TransparentFX
