@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,48 +8,58 @@ public class Player : MonoBehaviour
 {
     GameController gc;
 
-    public int health;
-    public int numOfHearts;
-    public Image[] hearts;
-    public Sprite heart;
-    public int lives;
-    public int points;
-    public Text livesText;
-    public Text booksText;
-    public ParticleSystem particle;
-
     Rigidbody2D rb;
     Animator anim;
 
+    [Header("Hearts Data")]
+    public int numOfHearts;
+    public Image[] hearts;
+    public Sprite heart;
+
+    [Header("Books Data")]
+    public int numOfBooks;
+    public Image[] books;
+    public Sprite book;
+
+    [Header("Player Stats Data")]
+    public int health;
+    public int lives;
+    public int points;
     float moveInput;
     public float jumpForce;
     public float speed;
-
-    public GameObject[] particles;
-    
     bool isGrounded;
+    
+    [Header("Text Data")]
+    public Text livesText;
+
+    [Header("Particle System Data")]
+    public ParticleSystem particle;
+    public GameObject[] particles;
+
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask ground;
 
     private bool isCollide;
     public float timer;
-    
+       
 
     void Start()
     {
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         points = gc.points;
         health = gc.health;
-        numOfHearts = health;
+        numOfHearts = gc.health;
+        numOfBooks = gc.points;
         lives = gc.lives;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
     void Update()
-    {        
-        numOfHearts = health;
+    {                   
         FillHearts();
+        FillBooks();
 
         if (lives >= 0)
         {
@@ -74,13 +85,29 @@ public class Player : MonoBehaviour
             if (timer <= 0)
                 timer = 0;
         }
-
-        booksText.text = "x" + points;
+        
         livesText.text = "x" + lives;
+    }
+
+    private void FillBooks()
+    {
+        numOfBooks = points;
+        for (int i = 0; i < books.Length; i++)
+        {
+            if (i < numOfBooks)
+            {
+                books[i].enabled = true;
+            }
+            else
+            {
+                books[i].enabled = false;
+            }
+        }
     }
 
     private void FillHearts()
     {
+        numOfHearts = health;
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < numOfHearts)
@@ -200,12 +227,8 @@ public class Player : MonoBehaviour
         }
         if (col.CompareTag("FinishLevel"))
         {
-            if (points == 5)
-            {
-                points = 0;
-                gc.sceneIndex++;
-                gc.LoadNextLevel();
-            }
+            FinishLevel();
+            
             
         }
         if (col.CompareTag("Death"))
@@ -215,6 +238,19 @@ public class Player : MonoBehaviour
             transform.rotation = new Quaternion(0,0,0,0);
         }
     }
+
+    private void FinishLevel()
+    {
+        if (points == 5)
+        {
+            points = 0;
+            numOfBooks = 0;
+            gc.points = 0;
+            gc.sceneIndex++;
+            gc.LoadNextLevel();
+        }
+    }
+
     void PlayParticle()
     {
         particle.Play();

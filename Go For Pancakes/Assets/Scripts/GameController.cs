@@ -29,9 +29,14 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        points = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().points;
-        health = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
-        lives = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().lives;
+        if (!GameObject.FindGameObjectWithTag("Player"))
+            return;
+        else
+        {
+            points = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().points;
+            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
+            lives = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().lives;
+        }        
     }
 
     internal void LoadNextLevel()
@@ -40,6 +45,7 @@ public class GameController : MonoBehaviour
     }
     public void StartGame()
     {
+        sceneIndex++;
         SceneManager.LoadScene(1);
     }
     internal void GameOver()

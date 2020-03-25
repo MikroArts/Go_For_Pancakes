@@ -12,12 +12,16 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         anim = GetComponentInChildren<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (GameObject.FindGameObjectWithTag("Player"))
+            target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void FixedUpdate()
     {
-        Vector2 smoothPos = Vector2.Lerp(transform.position, target.position + offset, smoothSpeed * Time.deltaTime);
-        transform.position = smoothPos;
+        if(target)
+        {
+            Vector2 smoothPos = Vector2.Lerp(transform.position, target.position + offset, smoothSpeed * Time.deltaTime);
+            transform.position = smoothPos;
+        }
 
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {

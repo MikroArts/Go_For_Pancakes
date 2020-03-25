@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 868bb648343e4b649b0e1d72a2be3358
+guid: d43d00dca4a8e814fa16b6eb0a43d444
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -8,9 +8,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Luckiest Guy
+  fontName: GoodDog Plain
   fontNames:
-  - Luckiest Guy
+  - GoodDog Plain
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
