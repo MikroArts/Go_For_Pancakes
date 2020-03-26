@@ -39,7 +39,7 @@ public class PoliceMan : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Granny") || col.CompareTag("Untagged") || col.CompareTag("Cop") || col.CompareTag("Worker"))
+        if (col.CompareTag("Granny") || col.CompareTag("Untagged") || col.CompareTag("Cop") || col.CompareTag("Worker") || col.CompareTag("SafeZone"))
         {
             if (moveRight)
             {

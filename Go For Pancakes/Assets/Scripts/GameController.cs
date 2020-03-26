@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour
 {
     static GameController gameController;
     public int sceneIndex = 0;
-
+    
     [Header("Player Stats")]
     public int points;
     public int health;
@@ -26,7 +26,6 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     void Update()
     {
         if (!GameObject.FindGameObjectWithTag("Player"))
@@ -50,6 +49,19 @@ public class GameController : MonoBehaviour
     }
     internal void GameOver()
     {
+        points = 0;
+        lives = 3;
+        health = 4;
         SceneManager.LoadScene(4);
+    }
+
+    public void ToggleSound()
+    {
+        AudioListener.pause = !AudioListener.pause;
+    }
+    
+    public void QuitGame()
+    {
+
     }
 }
