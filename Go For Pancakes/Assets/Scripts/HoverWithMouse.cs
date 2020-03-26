@@ -5,7 +5,7 @@ using UnityEngine;
 public class HoverWithMouse : MonoBehaviour
 {
     AudioSource audioSource;
-    public AudioClip[] clips;
+    public AudioClip clip;
 
     void Start()
     {
@@ -13,10 +13,6 @@ public class HoverWithMouse : MonoBehaviour
     }
     public void OnMouseEnter()
     {
-        audioSource.PlayOneShot(clips[0]);
-    }
-    public void OnMouseClick()
-    {
-        audioSource.PlayOneShot(clips[1]);
+        audioSource.PlayOneShot(clip);
     }
 }

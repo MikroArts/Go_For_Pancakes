@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
     static GameController gameController;
-    public int sceneIndex = 0;
+    public int sceneIndex;
     
     [Header("Player Stats")]
     public int points;
@@ -28,6 +28,12 @@ public class GameController : MonoBehaviour
     }
     void Update()
     {
+        
+        if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
+            sceneIndex = 1;
+        else
+            sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        
         if (!GameObject.FindGameObjectWithTag("Player"))
             return;
         else
@@ -38,15 +44,16 @@ public class GameController : MonoBehaviour
         }        
     }
 
-    internal void LoadNextLevel()
+    public void LoadNextLevel()
     {
         SceneManager.LoadScene(sceneIndex);
     }
+
     public void StartGame()
     {
-        sceneIndex++;
         SceneManager.LoadScene(1);
     }
+
     internal void GameOver()
     {
         points = 0;
@@ -63,5 +70,19 @@ public class GameController : MonoBehaviour
     public void QuitGame()
     {
 
+    }
+
+    public void Pause()
+    {
+        if (Time.timeScale > 0f)
+        {
+            AudioListener.pause = true;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            AudioListener.pause = false;
+            Time.timeScale = 1f;
+        }
     }
 }

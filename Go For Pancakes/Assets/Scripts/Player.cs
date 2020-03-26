@@ -53,12 +53,10 @@ public class Player : MonoBehaviour
     private bool isCollide;
     public float timer;
     public GameObject levelCompletion;
-
-    private bool isUnmovable;
+    private bool isMovable;
 
     void Start()
     {
-        isUnmovable = false;
         gc = GameObject.Find("GameController").GetComponent<GameController>();
         points = gc.points;
         health = gc.health;
@@ -68,6 +66,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         levelCompletion.SetActive(false);
+        isMovable = true;
     }
     void Update()
     {                   
@@ -81,19 +80,19 @@ public class Player : MonoBehaviour
                 lives--;
                 health += 7;
             }
-            isUnmovable = false;
         }
         else
         {
-            isUnmovable = true;
+            isMovable = false;
             livesText.text = "x0";
             health = 0;
-            fadePanel.SetTrigger("FadeOut");
             StartCoroutine(PlayOhNo());
+            fadePanel.SetTrigger("FadeOut");            
             return;
         }
 
-        Jump();
+        if (isMovable)
+            Jump();
 
         if (isCollide)
         {
@@ -139,16 +138,17 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!isUnmovable)
-            Move();
-        else
-            anim.SetBool("isRide", false);
+        Move();
     }
 
     private void Move()
     { 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
-        moveInput = Input.GetAxis("Horizontal");
+
+        if (isMovable)
+            moveInput = Input.GetAxis("Horizontal");
+        else
+            moveInput = 0;
 
         if (moveInput == 0)
         {
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
     }
     private void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded && Time.timeScale > 0)
         {
             PlayParticle();
             rb.velocity = Vector2.up * jumpForce;
@@ -229,7 +229,7 @@ public class Player : MonoBehaviour
                     return;
                 Instantiate(particles[1], col.transform.position, Quaternion.identity);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().Play(0);
+                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
             }            
         }
@@ -251,7 +251,8 @@ public class Player : MonoBehaviour
                     return;
                 Instantiate(particles[4], col.transform.position, Quaternion.identity);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
-                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
+                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
+                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);                
             }
         }
 
@@ -273,7 +274,7 @@ public class Player : MonoBehaviour
 
                 Instantiate(particles[2], col.transform.position, Quaternion.identity);
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().Play(0);
+                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Granny>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
             }
             
@@ -282,15 +283,15 @@ public class Player : MonoBehaviour
 
         if (col.CompareTag("FinishLevel"))
         {
-            isUnmovable = true;
-            StartCoroutine(PlayTaDa());   
+            isMovable = false;
+            StartCoroutine(PlayTaDa());
+            //isMovable = true;
         }
 
         if (col.CompareTag("Death"))
-        {
+        {            
             lives--;
-            transform.position = new Vector3(.59f, -.4f, 0f);
-            transform.rotation = new Quaternion(0, 0, 0, 0);
+            StartCoroutine(PlayLoseLife());
         }
     }
     
@@ -301,26 +302,31 @@ public class Player : MonoBehaviour
             points = 0;
             numOfBooks = 0;
             gc.points = 0;
-            gc.sceneIndex++;
             gc.LoadNextLevel();
         }
     }
 
     IEnumerator PlayTaDa()
     {
-        if(!GetComponent<AudioSource>().isPlaying)
+        
+        if (!GetComponent<AudioSource>().isPlaying)
             GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
         fadePanel.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(3.2f);        
         FinishLevel();
-
     }
     IEnumerator PlayOhNo()
     {
-        //if (!GetComponent<AudioSource>().isPlaying)
-        //    GetComponent<AudioSource>().PlayOneShot(audioClips[5]);  --- Play death sound
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(3.2f);        
         gc.GameOver();
+    }
+
+    IEnumerator PlayLoseLife()
+    {
+        fadePanel.SetTrigger("FadeOut");        
+        yield return new WaitForSeconds(1f);
+        transform.position = new Vector3(.59f, -.4f, 0f);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
     void PlayParticle()

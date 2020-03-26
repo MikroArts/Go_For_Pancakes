@@ -1540,8 +1540,6 @@ ParticleSystem:
     sprites:
     - sprite: {fileID: -8206379292684454978, guid: 5f99b12050ec56f4e8ddf349efca66ea,
         type: 3}
-    - sprite: {fileID: 134216207774390598, guid: 5f99b12050ec56f4e8ddf349efca66ea,
-        type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:

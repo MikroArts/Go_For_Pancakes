@@ -45,9 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneIndex: 0
-  audioSource: {fileID: 6116812768469887507}
-  clips:
-  - {fileID: 8300000, guid: 07d6a3093cc043843a6ccabd8bba223b, type: 3}
   points: 0
   health: 4
   lives: 3

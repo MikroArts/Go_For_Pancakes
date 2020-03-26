@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: f2e8b303000942040b729bbdc1420aa5
   - enabled: 1
     path: Assets/Scenes/ConstructionSite.unity
-    guid: 8b331a8129c621149bc1cf5325ffa783
+    guid: 707a8162ddaf2d14bb2ee406bfe40514
   - enabled: 1
     path: Assets/Scenes/Downtown.unity
     guid: 2cda990e2423bbf4892e6590ba056729

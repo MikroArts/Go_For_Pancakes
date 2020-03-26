@@ -11,6 +11,7 @@ public class PoliceMan : MonoBehaviour
     
     public Transform groundCheck;
     Animator anim;
+    public AudioClip AudioClip;
 
     void Start()
     {        
