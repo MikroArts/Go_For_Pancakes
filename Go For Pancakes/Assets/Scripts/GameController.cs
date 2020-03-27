@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     public int health;
     public int lives;
     
-
     void Awake()
     {
         if (gameController == null)
@@ -27,6 +26,7 @@ public class GameController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+   
     void Update()
     {        
         if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
@@ -51,6 +51,9 @@ public class GameController : MonoBehaviour
 
     public void StartGame()
     {
+        points = 0;
+        lives = 3;
+        health = 4;
         SceneManager.LoadScene(1);
     }
 
@@ -76,13 +79,18 @@ public class GameController : MonoBehaviour
     {
         if (Time.timeScale > 0f)
         {
-            AudioListener.pause = true;
+            GameObject.Find("PausePanel").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);           
             Time.timeScale = 0f;
         }
         else
         {
-            AudioListener.pause = false;
+            GameObject.Find("PausePanel").GetComponent<RectTransform>().localScale = Vector3.zero;
             Time.timeScale = 1f;
         }
+    }
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(0);
     }
 }

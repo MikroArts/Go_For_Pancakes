@@ -218,6 +218,7 @@ public class Player : MonoBehaviour
         {
             if (timer <= 0)
             {
+                StartCoroutine(ShowPoliceCloud(col));
                 isCollide = true;
                 timer = 1f;
 
@@ -232,7 +233,7 @@ public class Player : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
                 col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
-            }            
+            }
         }
 
 
@@ -240,6 +241,7 @@ public class Player : MonoBehaviour
         {
             if (timer <= 0)
             {
+                StartCoroutine(ShowPoliceCloud(col));
                 isCollide = true;
                 timer = 1f;
 
@@ -262,6 +264,7 @@ public class Player : MonoBehaviour
         {
             if (timer <= 0)
             {
+                StartCoroutine(ShowGrannyCloud(col));
                 isCollide = true;
                 timer = 1f;
 
@@ -304,7 +307,20 @@ public class Player : MonoBehaviour
             }            
         }
     }
-    
+
+    IEnumerator ShowPoliceCloud(Collider2D col)
+    {
+        col.GetComponent<PoliceMan>().cloud.localScale = new Vector3(1, 1, 1);
+        yield return new WaitForSeconds(1f);
+        col.GetComponent<PoliceMan>().cloud.localScale = Vector3.zero;
+    }
+    IEnumerator ShowGrannyCloud(Collider2D col)
+    {
+        col.GetComponent<Granny>().cloud.localScale = new Vector3(1, 1, 1);
+        yield return new WaitForSeconds(1f);
+        col.GetComponent<Granny>().cloud.localScale = Vector3.zero;
+    }
+
     private void FinishLevel()
     {
         if (points == 5)

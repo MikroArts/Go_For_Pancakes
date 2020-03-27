@@ -12,6 +12,7 @@ public class Granny : MonoBehaviour
     public Transform groundCheck;
     Animator anim;
     public AudioClip AudioClip;
+    public RectTransform cloud;
 
     void Start()
     {        
