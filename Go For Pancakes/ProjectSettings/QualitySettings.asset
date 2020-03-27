@@ -76,7 +76,8 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - WebGL
   - serializedVersion: 2
     name: Medium
     pixelLightCount: 1
@@ -147,8 +148,7 @@ QualitySettings:
     asyncUploadBufferSize: 16
     asyncUploadPersistentBuffer: 1
     resolutionScalingFixedDPIFactor: 1
-    excludedTargetPlatforms:
-    - WebGL
+    excludedTargetPlatforms: []
   - serializedVersion: 2
     name: Very High
     pixelLightCount: 3

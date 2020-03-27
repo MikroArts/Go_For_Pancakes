@@ -86,8 +86,8 @@ public class Player : MonoBehaviour
             isMovable = false;
             livesText.text = "x0";
             health = 0;
-            StartCoroutine(PlayOhNo());
-            fadePanel.SetTrigger("FadeOut");            
+            gameObject.transform.localScale = Vector3.zero;
+            StartCoroutine(PlayOhNo());                   
             return;
         }
 
@@ -160,9 +160,10 @@ public class Player : MonoBehaviour
             PlayParticle();
             rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);            
             anim.SetBool("isRide", true);
-
+            
             if (!trotinet.GetComponent<AudioSource>().isPlaying)
                 trotinet.GetComponent<AudioSource>().PlayOneShot(trotinetSound);
+            
 
             if (moveInput < 0)
                 transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
@@ -174,9 +175,9 @@ public class Player : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded && Time.timeScale > 0)
         {
-            PlayParticle();
-            rb.velocity = Vector2.up * jumpForce;
             anim.SetTrigger("isJump");
+            PlayParticle();
+            rb.velocity = Vector2.up * jumpForce;            
             GetComponent<AudioSource>().PlayOneShot(audioClips[3]);
         }        
     }
@@ -284,14 +285,23 @@ public class Player : MonoBehaviour
         if (col.CompareTag("FinishLevel"))
         {
             isMovable = false;
+
             StartCoroutine(PlayTaDa());
             //isMovable = true;
         }
 
         if (col.CompareTag("Death"))
-        {            
-            lives--;
-            StartCoroutine(PlayLoseLife());
+        {
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
+            if (timer <= 0)
+            {
+                isCollide = true;
+                timer = 1f;
+                
+                lives--;
+                StartCoroutine(PlayLoseLife());
+            }            
         }
     }
     
@@ -308,23 +318,29 @@ public class Player : MonoBehaviour
 
     IEnumerator PlayTaDa()
     {
-        
+
         if (!GetComponent<AudioSource>().isPlaying)
-            GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
         fadePanel.SetTrigger("FadeOut");
         yield return new WaitForSeconds(3.2f);        
         FinishLevel();
     }
     IEnumerator PlayOhNo()
     {
-        yield return new WaitForSeconds(3.2f);        
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
+        fadePanel.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(2.2f);
+        GetComponent<AudioSource>().Stop();
+        yield return new WaitForSeconds(1f);
         gc.GameOver();
     }
 
     IEnumerator PlayLoseLife()
     {
         fadePanel.SetTrigger("FadeOut");        
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         transform.position = new Vector3(.59f, -.4f, 0f);
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }

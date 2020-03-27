@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public int points;
     public int health;
     public int lives;
+    
 
     void Awake()
     {
@@ -27,8 +28,7 @@ public class GameController : MonoBehaviour
         }
     }
     void Update()
-    {
-        
+    {        
         if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
             sceneIndex = 1;
         else
@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
             points = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().points;
             health = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
             lives = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().lives;
-        }        
+        }
     }
 
     public void LoadNextLevel()
