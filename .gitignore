@@ -9,7 +9,6 @@ Go For Pancakes/[Bb]uild/
 Go For Pancakes/[Bb]uilds/
 Go For Pancakes/[Ll]ogs/
 Go For Pancakes/[Mm]emoryCaptures/
-Go For Pancakes/[Aa]ssets/Scenes/TestScene.unity
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
