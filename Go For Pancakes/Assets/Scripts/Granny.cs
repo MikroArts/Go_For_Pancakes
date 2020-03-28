@@ -41,7 +41,7 @@ public class Granny : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Cop") || col.CompareTag("Untagged") || col.CompareTag("Granny") || col.CompareTag("Worker") || col.CompareTag("SafeZone"))
+        if (col.CompareTag("Cop") || col.CompareTag("Untagged") || col.CompareTag("Granny") || col.CompareTag("Worker") || col.CompareTag("Spy") || col.CompareTag("SafeZone"))
         {
             if (moveRight)
             {

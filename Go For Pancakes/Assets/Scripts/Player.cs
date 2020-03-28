@@ -55,6 +55,9 @@ public class Player : MonoBehaviour
     public GameObject levelCompletion;
     private bool isMovable;
 
+    public RectTransform cloud;
+    public float idleTime;
+    private bool isIdle;
     void Start()
     {
         gc = GameObject.Find("GameController").GetComponent<GameController>();
@@ -69,7 +72,24 @@ public class Player : MonoBehaviour
         isMovable = true;
     }
     void Update()
-    {                   
+    {
+        if (moveInput == 0 && isGrounded && !(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)))
+        {
+            idleTime -= Time.deltaTime;
+            
+            
+            if (idleTime <= 0)
+            {
+                cloud.localScale = new Vector3(1, 1, 1);
+                cloud.localEulerAngles = new Vector3(0, 0, 0);
+            }            
+        }
+        else
+        {
+            idleTime = 5;
+            cloud.localScale = Vector3.zero;
+        }
+
         FillHearts();
         FillBooks();
 
@@ -230,7 +250,7 @@ public class Player : MonoBehaviour
                 else
                     return;
                 Instantiate(particles[1], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
                 col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
             }
@@ -253,7 +273,7 @@ public class Player : MonoBehaviour
                 else
                     return;
                 Instantiate(particles[4], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
                 col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);                
             }
@@ -277,11 +297,35 @@ public class Player : MonoBehaviour
                     return;
 
                 Instantiate(particles[2], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponentInChildren<CameraFollow>().ShakeCam();
+                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
                 col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Granny>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
             }
             
+        }
+
+        if (col.CompareTag("Spy"))
+        {
+            if (timer <= 0)
+            {
+                StartCoroutine(ShowSpyCloud(col));
+                isCollide = true;
+                timer = 1f;
+
+                if (health >= 0 && lives > -1)
+                {
+                    heartUI.GetComponent<Animator>().SetTrigger("isCollect");
+                    health -= col.GetComponent<Spy>().damage;
+                }
+                else
+                    return;
+
+                Instantiate(particles[5], col.transform.position, Quaternion.identity);
+                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
+                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Spy>().AudioClip);
+                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
+            }
+
         }
 
 
@@ -313,6 +357,12 @@ public class Player : MonoBehaviour
         col.GetComponent<PoliceMan>().cloud.localScale = new Vector3(1, 1, 1);
         yield return new WaitForSeconds(1f);
         col.GetComponent<PoliceMan>().cloud.localScale = Vector3.zero;
+    }
+    IEnumerator ShowSpyCloud(Collider2D col)
+    {
+        col.GetComponent<Spy>().cloud.localScale = new Vector3(1, 1, 1);
+        yield return new WaitForSeconds(1f);
+        col.GetComponent<Spy>().cloud.localScale = Vector3.zero;
     }
     IEnumerator ShowGrannyCloud(Collider2D col)
     {

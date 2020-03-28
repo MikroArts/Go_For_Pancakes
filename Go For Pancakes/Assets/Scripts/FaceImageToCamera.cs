@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FaceImageToCamera : MonoBehaviour
 {
-    Camera mainCamera;
+    GameObject lookTarget;
 
     void Start()
     {
-        mainCamera = Camera.main;
+        lookTarget = GameObject.FindGameObjectWithTag("GameController");
     }
 
     void LateUpdate()
     {
-        mainCamera = Camera.main;
-        transform.LookAt(mainCamera.transform);        
+        transform.eulerAngles = Vector3.zero;   
     }
 }
