@@ -2,24 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoliceMan : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     public int damage;
     public float speed;
     public float distance;
     bool moveRight = true;
-    
+
     public Transform groundCheck;
     Animator anim;
     public AudioClip AudioClip;
     public RectTransform cloud;
+    public GameObject particle;
 
     void Start()
-    {        
+    {
         anim = GetComponent<Animator>();
         anim.SetBool("isWalk", true);
     }
-     
+
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
@@ -41,7 +42,7 @@ public class PoliceMan : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Granny") || col.CompareTag("Untagged") || col.CompareTag("Cop") || col.CompareTag("Worker") || col.CompareTag("Spy") || col.CompareTag("SafeZone"))
+        if (col.CompareTag("Enemy") || col.CompareTag("SafeZone"))
         {
             if (moveRight)
             {

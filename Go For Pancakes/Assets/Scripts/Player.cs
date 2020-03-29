@@ -229,112 +229,40 @@ public class Player : MonoBehaviour
             Destroy(col.gameObject);
             GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
         }
-
-
-        if (col.CompareTag("Cop") && col.name != "Worker")
+                
+        if (col.CompareTag("Enemy"))
         {
             if (timer <= 0)
             {
-                StartCoroutine(ShowPoliceCloud(col));
+                StartCoroutine(ShowEnemyCloud(col));
                 isCollide = true;
                 timer = 1f;
 
                 if (gc.health >= 0 && gc.lives > -1)
                 {
                     heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    gc.health -= col.GetComponent<PoliceMan>().damage;
-                }
-                else
-                    return;
-                Instantiate(particles[1], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
-                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
-            }
-        }
-
-
-        if (col.name == "Worker")
-        {
-            if (timer <= 0)
-            {
-                StartCoroutine(ShowPoliceCloud(col));
-                isCollide = true;
-                timer = 1f;
-
-                if (gc.health >= 0 && gc.lives > -1)
-                {
-                    gc.health -= col.GetComponent<PoliceMan>().damage;
-                    heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                }
-                else
-                    return;
-                Instantiate(particles[4], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<PoliceMan>().AudioClip);
-                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);                
-            }
-        }
-
-
-        if (col.CompareTag("Granny"))
-        {
-            if (timer <= 0)
-            {
-                StartCoroutine(ShowGrannyCloud(col));
-                isCollide = true;
-                timer = 1f;
-
-                if (gc.health >= 0 && gc.lives > -1)
-                {
-                    heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    gc.health -= col.GetComponent<Granny>().damage;
+                    gc.health -= col.GetComponent<Enemy>().damage;
                 }
                 else
                     return;
 
-                Instantiate(particles[2], col.transform.position, Quaternion.identity);
+                Instantiate(col.GetComponent<Enemy>().particle, col.transform.position, Quaternion.identity);
                 GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Granny>().AudioClip);
-                GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
-            }
-            
-        }
-
-        if (col.CompareTag("Spy"))
-        {
-            if (timer <= 0)
-            {
-                StartCoroutine(ShowSpyCloud(col));
-                isCollide = true;
-                timer = 1f;
-
-                if (gc.health >= 0 && gc.lives > -1)
-                {
-                    heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    gc.health -= col.GetComponent<Spy>().damage;
-                }
-                else
-                    return;
-
-                Instantiate(particles[5], col.transform.position, Quaternion.identity);
-                GameObject.FindGameObjectWithTag("CameraHolder").GetComponentInChildren<CameraFollow>().ShakeCam();
-                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Spy>().AudioClip);
+                col.GetComponent<AudioSource>().PlayOneShot(col.GetComponent<Enemy>().AudioClip);
                 GetComponent<AudioSource>().PlayOneShot(audioClips[2]);
             }
 
         }
 
 
-        if (col.CompareTag("FinishLevel"))
+        if (col.CompareTag("Finish"))
         {
             isMovable = false;
 
             StartCoroutine(PlayTaDa());
-            //isMovable = true;
         }
 
-        if (col.CompareTag("Death"))
+        if (col.CompareTag("Respawn"))
         {
             if (timer <= 0)
             {
@@ -393,24 +321,14 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(.59f, -.4f, 0f);
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
-    IEnumerator ShowPoliceCloud(Collider2D col)
+    
+    IEnumerator ShowEnemyCloud(Collider2D col)
     {
-        col.GetComponent<PoliceMan>().cloud.localScale = new Vector3(1, 1, 1);
+        col.GetComponent<Enemy>().cloud.localScale = new Vector3(1, 1, 1);
         yield return new WaitForSeconds(1f);
-        col.GetComponent<PoliceMan>().cloud.localScale = Vector3.zero;
+        col.GetComponent<Enemy>().cloud.localScale = Vector3.zero;
     }
-    IEnumerator ShowSpyCloud(Collider2D col)
-    {
-        col.GetComponent<Spy>().cloud.localScale = new Vector3(1, 1, 1);
-        yield return new WaitForSeconds(1f);
-        col.GetComponent<Spy>().cloud.localScale = Vector3.zero;
-    }
-    IEnumerator ShowGrannyCloud(Collider2D col)
-    {
-        col.GetComponent<Granny>().cloud.localScale = new Vector3(1, 1, 1);
-        yield return new WaitForSeconds(1f);
-        col.GetComponent<Granny>().cloud.localScale = Vector3.zero;
-    }
+    
     void PlayParticle()
     {
         smoke.Play();

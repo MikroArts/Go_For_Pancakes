@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.targetFrameRate = -1;
     }
    
     void Update()
