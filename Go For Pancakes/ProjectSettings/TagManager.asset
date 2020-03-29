@@ -5,18 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Book
-  - Granny
-  - Cop
   - Heart
-  - Truck
-  - Car
   - Ground
-  - FinishLevel
-  - Worker
-  - Death
   - SafeZone
   - CameraHolder
-  - Spy
+  - Enemy
+  - Vehicle
   layers:
   - Default
   - TransparentFX
