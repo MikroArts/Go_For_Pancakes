@@ -23,10 +23,7 @@ public class Player : MonoBehaviour
     public Sprite book;
     public GameObject bookUI;
 
-    [Header("Player Stats Data")]
-    public int health;
-    public int lives;
-    public int points;
+    [Header("Player Stats Data")]    
     float moveInput;
     public float jumpForce;
     public float speed;
@@ -36,7 +33,8 @@ public class Player : MonoBehaviour
     public Text livesText;
 
     [Header("Particle System Data")]
-    public ParticleSystem particle;
+    public ParticleSystem smoke;
+    public ParticleSystem dieParticle;
     public GameObject[] particles;
 
     [Header("Audio Data")]
@@ -60,16 +58,14 @@ public class Player : MonoBehaviour
     private bool isIdle;
     void Start()
     {
-        gc = GameObject.Find("GameController").GetComponent<GameController>();
-        points = gc.points;
-        health = gc.health;
+        gc = GameObject.Find("GameController").GetComponent<GameController>();        
         numOfHearts = gc.health;
         numOfBooks = gc.points;
-        lives = gc.lives;
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         levelCompletion.SetActive(false);
         isMovable = true;
+        idleTime = 6;
     }
     void Update()
     {
@@ -93,20 +89,21 @@ public class Player : MonoBehaviour
         FillHearts();
         FillBooks();
 
-        if (lives >= 0)
+        if (gc.lives >= 0)
         {
-            if (health <= 0)
+            if (gc.health <= 0)
             {
-                lives--;
-                health += 7;
+                gc.lives--;
+                gc.health += 7;
             }
         }
         else
         {
             isMovable = false;
             livesText.text = "x0";
-            health = 0;
-            gameObject.transform.localScale = Vector3.zero;
+            gc.health = 0;
+            gameObject.transform.localScale = new Vector3(.01f, .01f, .01f);
+            dieParticle.Play();
             StartCoroutine(PlayOhNo());                   
             return;
         }
@@ -121,12 +118,12 @@ public class Player : MonoBehaviour
                 timer = 0;
         }
         
-        livesText.text = "x" + lives;
+        livesText.text = "x" + gc.lives;
     }
 
     private void FillBooks()
     {
-        numOfBooks = points;
+        numOfBooks = gc.points;
         for (int i = 0; i < books.Length; i++)
         {
             if (i < numOfBooks)
@@ -142,7 +139,7 @@ public class Player : MonoBehaviour
 
     private void FillHearts()
     {
-        numOfHearts = health;
+        numOfHearts = gc.health;
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < numOfHearts)
@@ -206,8 +203,8 @@ public class Player : MonoBehaviour
         if (col.CompareTag("Book"))
         {
             bookUI.GetComponent<Animator>().SetTrigger("isCollect");
-            points++;            
-            if (points == 5)
+            gc.points++;            
+            if (gc.points == 5)
             {
                 GetComponent<AudioSource>().PlayOneShot(audioClips[5]);
                 levelCompletion.SetActive(true);
@@ -222,12 +219,12 @@ public class Player : MonoBehaviour
         {
             heartUI.GetComponent<Animator>().SetTrigger("isCollect");
             Instantiate(particles[3], col.transform.position, Quaternion.identity);
-            health += 1;
-            if (health > 7)
+            gc.health += 1;
+            if (gc.health > 7)
             {
                 heartUI.GetComponent<Animator>().SetTrigger("isLiveUp");
-                lives++;
-                health = 1;
+                gc.lives++;
+                gc.health = 1;
             }                
             Destroy(col.gameObject);
             GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
@@ -242,10 +239,10 @@ public class Player : MonoBehaviour
                 isCollide = true;
                 timer = 1f;
 
-                if (health >= 0 && lives > -1)
+                if (gc.health >= 0 && gc.lives > -1)
                 {
                     heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    health -= col.GetComponent<PoliceMan>().damage;
+                    gc.health -= col.GetComponent<PoliceMan>().damage;
                 }
                 else
                     return;
@@ -265,9 +262,9 @@ public class Player : MonoBehaviour
                 isCollide = true;
                 timer = 1f;
 
-                if (health >= 0 && lives > -1)
+                if (gc.health >= 0 && gc.lives > -1)
                 {
-                    health -= col.GetComponent<PoliceMan>().damage;
+                    gc.health -= col.GetComponent<PoliceMan>().damage;
                     heartUI.GetComponent<Animator>().SetTrigger("isCollect");
                 }
                 else
@@ -288,10 +285,10 @@ public class Player : MonoBehaviour
                 isCollide = true;
                 timer = 1f;
 
-                if (health >= 0 && lives > -1)
+                if (gc.health >= 0 && gc.lives > -1)
                 {
                     heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    health -= col.GetComponent<Granny>().damage;
+                    gc.health -= col.GetComponent<Granny>().damage;
                 }
                 else
                     return;
@@ -312,10 +309,10 @@ public class Player : MonoBehaviour
                 isCollide = true;
                 timer = 1f;
 
-                if (health >= 0 && lives > -1)
+                if (gc.health >= 0 && gc.lives > -1)
                 {
                     heartUI.GetComponent<Animator>().SetTrigger("isCollect");
-                    health -= col.GetComponent<Spy>().damage;
+                    gc.health -= col.GetComponent<Spy>().damage;
                 }
                 else
                     return;
@@ -339,19 +336,63 @@ public class Player : MonoBehaviour
 
         if (col.CompareTag("Death"))
         {
-            if (!GetComponent<AudioSource>().isPlaying)
-                GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
             if (timer <= 0)
             {
                 isCollide = true;
                 timer = 1f;
                 
-                lives--;
                 StartCoroutine(PlayLoseLife());
             }            
         }
     }
 
+    
+
+    private void FinishLevel()
+    {
+        if (gc.points == 5)
+        {
+            numOfBooks = 0;
+            gc.points = 0;
+            gc.LoadNextLevel();
+        }
+    }
+
+    IEnumerator PlayTaDa()
+    {
+
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
+        fadePanel.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(3.2f);        
+        FinishLevel();
+    }
+    IEnumerator PlayOhNo()
+    {       
+        yield return new WaitForSeconds(.1f);
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
+        fadePanel.SetTrigger("FadeOut");
+        yield return new WaitForSeconds(2.2f);
+        GetComponent<AudioSource>().Stop();
+        yield return new WaitForSeconds(1f);
+        gc.GameOver();
+    }
+
+    IEnumerator PlayLoseLife()
+    {
+        dieParticle.Play();
+        if (!GetComponent<AudioSource>().isPlaying)
+            GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
+        fadePanel.SetTrigger("FadeOut");
+        gameObject.transform.localScale = new Vector3(.222f,.222f,.222f);
+        yield return new WaitForSeconds(1.5f);
+        gc.lives--;
+        transform.position = new Vector3(.59f, -.4f, 0f);
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
     IEnumerator ShowPoliceCloud(Collider2D col)
     {
         col.GetComponent<PoliceMan>().cloud.localScale = new Vector3(1, 1, 1);
@@ -370,49 +411,8 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1f);
         col.GetComponent<Granny>().cloud.localScale = Vector3.zero;
     }
-
-    private void FinishLevel()
-    {
-        if (points == 5)
-        {
-            points = 0;
-            numOfBooks = 0;
-            gc.points = 0;
-            gc.LoadNextLevel();
-        }
-    }
-
-    IEnumerator PlayTaDa()
-    {
-
-        if (!GetComponent<AudioSource>().isPlaying)
-            GetComponent<AudioSource>().Stop();
-        GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
-        fadePanel.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(3.2f);        
-        FinishLevel();
-    }
-    IEnumerator PlayOhNo()
-    {
-        if (!GetComponent<AudioSource>().isPlaying)
-            GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
-        fadePanel.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(2.2f);
-        GetComponent<AudioSource>().Stop();
-        yield return new WaitForSeconds(1f);
-        gc.GameOver();
-    }
-
-    IEnumerator PlayLoseLife()
-    {
-        fadePanel.SetTrigger("FadeOut");        
-        yield return new WaitForSeconds(1.5f);
-        transform.position = new Vector3(.59f, -.4f, 0f);
-        transform.rotation = new Quaternion(0, 0, 0, 0);
-    }
-
     void PlayParticle()
     {
-        particle.Play();
+        smoke.Play();
     }
 }

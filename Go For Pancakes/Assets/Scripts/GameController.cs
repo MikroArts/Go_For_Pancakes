@@ -28,20 +28,11 @@ public class GameController : MonoBehaviour
     }
    
     void Update()
-    {        
-        if (SceneManager.GetActiveScene().buildIndex >= SceneManager.sceneCountInBuildSettings - 1)
+    {
+        if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame")
             sceneIndex = 1;
         else
             sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        
-        if (!GameObject.FindGameObjectWithTag("Player"))
-            return;
-        else
-        {
-            points = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().points;
-            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().health;
-            lives = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().lives;
-        }
     }
 
     public void LoadNextLevel()
@@ -62,7 +53,7 @@ public class GameController : MonoBehaviour
         points = 0;
         lives = 3;
         health = 4;
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
 
     public void ToggleSound()
