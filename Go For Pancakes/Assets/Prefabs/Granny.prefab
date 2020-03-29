@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114725872}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114725871}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 2.9, y: -5.4, z: 545.70325}
+  m_LocalPosition: {x: -3.24, y: -5.4, z: 545.70325}
   m_LocalScale: {x: 5.815155, y: 5.815155, z: 5.815155}
   m_Children: []
   m_Father: {fileID: 6922685538059880904}
@@ -41,13 +41,13 @@ GameObject:
   - component: {fileID: 6922685538059880904}
   - component: {fileID: 2899324199574498535}
   - component: {fileID: 1630049278}
+  - component: {fileID: 5143804580341742532}
   - component: {fileID: 817189781585933021}
-  - component: {fileID: 942332874}
   - component: {fileID: 5501669556244630592}
   - component: {fileID: 8708314911952729734}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Granny
-  m_TagString: Granny
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,6 +110,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5143804580341742532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736595135142494650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452fc6e1139900b4d91c364a84884705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
+  speed: 0.5
+  distance: 0.5
+  groundCheck: {fileID: 1114725872}
+  AudioClip: {fileID: 8300000, guid: fb1e8575616b79440b982b985e021194, type: 3}
+  cloud: {fileID: 4898964852907400174}
+  particle: {fileID: 2063926467613678355, guid: 50266fc3ab7454144bf9e72135769362,
+    type: 3}
 --- !u!61 &817189781585933021
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,24 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.5566869, y: 2.183506}
   m_EdgeRadius: 0
---- !u!114 &942332874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736595135142494650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71eb03d16e3983f4aa04e5ffab5f89fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
-  speed: 0.5
-  distance: 0.5
-  groundCheck: {fileID: 1114725872}
-  AudioClip: {fileID: 8300000, guid: fb1e8575616b79440b982b985e021194, type: 3}
-  cloud: {fileID: 4898964852907400174}
 --- !u!61 &5501669556244630592
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6290622653270316973}
   - component: {fileID: 6924877737243402487}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -365,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5902833792227660503}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -381,7 +383,7 @@ Transform:
   m_GameObject: {fileID: 3059962945474283598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 0}
   m_Children:
   - {fileID: 6290622653270316973}
   - {fileID: 1052454256617564269}
@@ -401,7 +403,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3319049510317434325}
   - component: {fileID: 173166859801696702}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -481,7 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2192935295466617311}
   - component: {fileID: 4935520214127918946}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: L_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9015857143641633067}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -592,7 +594,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371377424742514732}
   - component: {fileID: 800063879374956908}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: R_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +677,7 @@ GameObject:
   - component: {fileID: 6483348043283770955}
   - component: {fileID: 2575025492884738696}
   - component: {fileID: 8955004427225906593}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -784,7 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6880483303550841046}
   - component: {fileID: 7400045874751981900}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +865,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7607013173948795806}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +881,7 @@ Transform:
   m_GameObject: {fileID: 7995154872632593482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 0}
   m_Children:
   - {fileID: 6880483303550841046}
   m_Father: {fileID: 6922685538059880904}
@@ -896,7 +898,7 @@ GameObject:
   - component: {fileID: 1387732399979078719}
   - component: {fileID: 4233583046930058556}
   - component: {fileID: 4979576822698244732}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1052454256617564269}
   - component: {fileID: 3230724344006448382}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}

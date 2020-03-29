@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889125078}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5552044533635575433}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 1631027128849936415}
   - component: {fileID: 1754657384205389677}
   - component: {fileID: 3071716859703956406}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1360175100829921279}
   - component: {fileID: 5544051894439745855}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,13 +228,13 @@ GameObject:
   - component: {fileID: 8262666260552455912}
   - component: {fileID: 219639279724199787}
   - component: {fileID: 4002600612228009901}
+  - component: {fileID: -8048977992128998883}
   - component: {fileID: 1455662178}
-  - component: {fileID: 13097588}
   - component: {fileID: 2405902495036880533}
   - component: {fileID: 3865198284223483794}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Police
-  m_TagString: Cop
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,6 +297,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8048977992128998883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190637503321041869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452fc6e1139900b4d91c364a84884705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  speed: 1
+  distance: 0.5
+  groundCheck: {fileID: 1889125078}
+  AudioClip: {fileID: 8300000, guid: ef7976ec256814b499c47bac25212b8f, type: 3}
+  cloud: {fileID: 3918057590180583423}
+  particle: {fileID: 2063926467613678355, guid: 73ee98f718b9c314b90c401f2fb6cab6,
+    type: 3}
 --- !u!70 &1455662178
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -313,24 +333,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.13746421}
   m_Size: {x: 4.1599507, y: 7.76977}
   m_Direction: 0
---- !u!114 &13097588
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190637503321041869}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3cbcaa901f5581429e8b9ea6629dfba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 1
-  speed: 1
-  distance: 0.5
-  groundCheck: {fileID: 1889125078}
-  AudioClip: {fileID: 8300000, guid: ef7976ec256814b499c47bac25212b8f, type: 3}
-  cloud: {fileID: 3918057590180583423}
 --- !u!61 &2405902495036880533
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -463,7 +465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 120767661117918439}
   - component: {fileID: 1425008817735497506}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Hat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -546,7 +548,7 @@ GameObject:
   - component: {fileID: 3114473507279813840}
   - component: {fileID: 5622338137680803549}
   - component: {fileID: 9131788921376517999}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -655,7 +657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 214997443003358150}
   - component: {fileID: 8622957612617211120}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: L_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +736,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717689919050850522}
-  m_Layer: 4
+  m_Layer: 0
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +768,7 @@ GameObject:
   m_Component:
   - component: {fileID: 927399257812323935}
   - component: {fileID: 5886421921734202861}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +847,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8840156999328380644}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +881,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8674270083310918222}
   - component: {fileID: 6565334065563526632}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: R_Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
