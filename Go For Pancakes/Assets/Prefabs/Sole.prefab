@@ -755,9 +755,6 @@ MonoBehaviour:
   - {fileID: 0}
   book: {fileID: -4779638694980605987, guid: 0d9856a4a28ff3b44af2870abfd46749, type: 3}
   bookUI: {fileID: 0}
-  health: 0
-  lives: 0
-  points: 0
   jumpForce: 17
   speed: 350
   livesText: {fileID: 0}
@@ -770,6 +767,7 @@ MonoBehaviour:
   - {fileID: 2063926467613678355, guid: 68b81b29dc5271c458e3c1367d81e311, type: 3}
   - {fileID: 2063926467613678355, guid: f3ad4c70d6db0b94aa4196b275f70703, type: 3}
   - {fileID: 2063926467613678355, guid: d7756d21d37585e4c98d2bb2dddbb499, type: 3}
+  - {fileID: 2063926467613678355, guid: 332316736d4158048bd82400a7cad2f4, type: 3}
   audioClips:
   - {fileID: 8300000, guid: e4f95b01ce4bfef409026f5ea77be2aa, type: 3}
   - {fileID: 8300000, guid: a772ac41d1c6510439986623c2960d30, type: 3}
@@ -1517,6 +1515,11 @@ PrefabInstance:
     - target: {fileID: 3227605335537159472, guid: 2e813afd1eefa2f48866f65d0fc40306,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257863612861326772, guid: 2e813afd1eefa2f48866f65d0fc40306,
+        type: 3}
+      propertyPath: stopAction
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
