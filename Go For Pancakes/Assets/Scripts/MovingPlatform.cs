@@ -15,14 +15,7 @@ public class MovingPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position == pos1.position)
-        {
-            nextPos = pos2.position;
-        }
-        if (transform.position == pos2.position)
-        {
-            nextPos = pos1.position;
-        }
+        nextPos = (transform.position == pos1.position) ? pos2.position : pos1.position;
 
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }

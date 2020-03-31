@@ -30,10 +30,11 @@ public class GameController : MonoBehaviour
    
     void Update()
     {
-        if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame")
-            sceneIndex = 1;
-        else
-            sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        sceneIndex = (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame") ? 1 : SceneManager.GetActiveScene().buildIndex + 1;
+        //if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame")
+
+        //else
+        //    sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     public void LoadNextLevel()
@@ -59,12 +60,12 @@ public class GameController : MonoBehaviour
 
     public void ToggleSound()
     {
-        AudioListener.pause = !AudioListener.pause;
+        AudioListener.volume = (AudioListener.volume == 0) ? 1f : 0;         
     }
     
     public void QuitGame()
     {
-
+        Application.Quit();
     }
 
     public void Pause()

@@ -100,7 +100,7 @@ public class Player : MonoBehaviour
         else
         {
             isMovable = false;
-            livesText.text = "x0";
+            livesText.text = "h0";
             gc.health = 0;
             gameObject.transform.localScale = new Vector3(.01f, .01f, .01f);
             dieParticle.Play();
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
                 timer = 0;
         }
         
-        livesText.text = "x" + gc.lives;
+        livesText.text = "h" + gc.lives;
     }
 
     private void FillBooks()
@@ -126,14 +126,7 @@ public class Player : MonoBehaviour
         numOfBooks = gc.points;
         for (int i = 0; i < books.Length; i++)
         {
-            if (i < numOfBooks)
-            {
-                books[i].enabled = true;
-            }
-            else
-            {
-                books[i].enabled = false;
-            }
+            books[i].enabled = (i < numOfBooks) ? true : false;
         }
     }
 
@@ -142,14 +135,7 @@ public class Player : MonoBehaviour
         numOfHearts = gc.health;
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < numOfHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            hearts[i].enabled = (i < numOfHearts) ? true : false;
         }
     }
 
@@ -162,10 +148,7 @@ public class Player : MonoBehaviour
     { 
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
 
-        if (isMovable)
-            moveInput = Input.GetAxis("Horizontal");
-        else
-            moveInput = 0;
+        moveInput = (isMovable) ? Input.GetAxis("Horizontal") : 0 ;
 
         if (moveInput == 0)
         {
@@ -181,11 +164,7 @@ public class Player : MonoBehaviour
             if (!trotinet.GetComponent<AudioSource>().isPlaying)
                 trotinet.GetComponent<AudioSource>().PlayOneShot(trotinetSound);
             
-
-            if (moveInput < 0)
-                transform.eulerAngles = new Vector3(transform.rotation.x, 180f, transform.rotation.z);
-            else
-                transform.eulerAngles = new Vector3(transform.rotation.x, 0, transform.rotation.z);
+            transform.eulerAngles = (moveInput < 0) ? new Vector3(transform.rotation.x, 180f, transform.rotation.z) : new Vector3(transform.rotation.x, 0, transform.rotation.z);
         }
     }
     private void Jump()
@@ -257,6 +236,8 @@ public class Player : MonoBehaviour
 
         if (col.CompareTag("Finish"))
         {
+            Instantiate(particles[6], col.transform.position, Quaternion.identity);
+            Destroy(col.gameObject);
             isMovable = false;
 
             StartCoroutine(PlayTaDa());
