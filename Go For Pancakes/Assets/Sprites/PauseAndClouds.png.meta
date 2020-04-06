@@ -23,6 +23,9 @@ TextureImporter:
   - first:
       213: 823371821161005575
     second: PauseAndClouds_6
+  - first:
+      213: 5994455845400123720
+    second: PauseAndClouds_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -261,7 +264,7 @@ TextureImporter:
         width: 277
         height: 270
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -269,6 +272,27 @@ TextureImporter:
       bones: []
       spriteID: b4595945930aac94bba52798ccd94b5e
       internalID: 823371821161005575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseAndClouds_7
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 779
+        width: 238
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea596e8c3495401498b6bab00800970a
+      internalID: 5994455845400123720
       vertices: []
       indices: 
       edges: []
