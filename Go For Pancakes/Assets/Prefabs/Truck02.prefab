@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.5
+  timer: 35
 --- !u!61 &1873694246650003710
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ PrefabInstance:
     - target: {fileID: 8591017756696577688, guid: 0800936fc7de1b04ba08e932794a5480,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5168
+      value: 0.5475
       objectReference: {fileID: 0}
     - target: {fileID: 8591017756696577688, guid: 0800936fc7de1b04ba08e932794a5480,
         type: 3}
@@ -350,7 +351,17 @@ PrefabInstance:
     - target: {fileID: 7640370396678585187, guid: 0800936fc7de1b04ba08e932794a5480,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.36564615
+      value: 0.19798139
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230769263608151, guid: 0800936fc7de1b04ba08e932794a5480,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 2.3951197
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051230769263608151, guid: 0800936fc7de1b04ba08e932794a5480,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.19798139
       objectReference: {fileID: 0}
     - target: {fileID: 5330117895316614783, guid: 0800936fc7de1b04ba08e932794a5480,
         type: 3}

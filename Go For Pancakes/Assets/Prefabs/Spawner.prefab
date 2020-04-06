@@ -44,7 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 6385085061828573223, guid: f9efd46e0388f354ba0e2f96078e4c3f, type: 3}
-  - {fileID: 8460078263854782447, guid: 37739187f05a5034682a6f7aa8f08c4a, type: 3}
-  - {fileID: 8573562652441236538, guid: 29206d37020e8c449a360ef430628441, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   startWaitTime: 5

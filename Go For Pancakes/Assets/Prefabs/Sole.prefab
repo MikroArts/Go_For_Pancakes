@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &418260478
 Transform:
   m_ObjectHideFlags: 0
@@ -653,6 +653,7 @@ GameObject:
   - component: {fileID: 4410512332271868935}
   - component: {fileID: 612102891}
   - component: {fileID: 612102892}
+  - component: {fileID: 7406795952534950770}
   - component: {fileID: 2080702588}
   - component: {fileID: 6461321491024597815}
   m_Layer: 0
@@ -788,6 +789,22 @@ MonoBehaviour:
   levelCompletion: {fileID: 0}
   cloud: {fileID: 49332793750618728}
   idleTime: 5
+--- !u!70 &7406795952534950770
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4410512332271868933}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000071525574, y: -4.59068}
+  m_Size: {x: 1.9771863, y: 0.62688386}
+  m_Direction: 1
 --- !u!61 &2080702588
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -795,7 +812,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4410512332271868933}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -1462,6 +1479,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DieParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 257863612861326772, guid: 2e813afd1eefa2f48866f65d0fc40306,
+        type: 3}
+      propertyPath: stopAction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3227605335537159472, guid: 2e813afd1eefa2f48866f65d0fc40306,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1515,11 +1537,6 @@ PrefabInstance:
     - target: {fileID: 3227605335537159472, guid: 2e813afd1eefa2f48866f65d0fc40306,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 257863612861326772, guid: 2e813afd1eefa2f48866f65d0fc40306,
-        type: 3}
-      propertyPath: stopAction
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1605,15 +1622,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd1741089d16564abbd395a05367409, type: 3}
---- !u!198 &1941709092 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 496965101661923332, guid: 6bd1741089d16564abbd395a05367409,
-    type: 3}
-  m_PrefabInstance: {fileID: 496965099776313632}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1941709090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 496965101661923330, guid: 6bd1741089d16564abbd395a05367409,
+    type: 3}
+  m_PrefabInstance: {fileID: 496965099776313632}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1941709092 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 496965101661923332, guid: 6bd1741089d16564abbd395a05367409,
     type: 3}
   m_PrefabInstance: {fileID: 496965099776313632}
   m_PrefabAsset: {fileID: 0}
