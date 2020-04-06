@@ -249,7 +249,8 @@ public class Player : MonoBehaviour
             {
                 isCollide = true;
                 timer = 1f;
-                
+                gc.health -= 5;
+                heartUI.GetComponent<Animator>().SetTrigger("isCollect");
                 StartCoroutine(PlayLoseLife());
             }            
         }
@@ -274,8 +275,13 @@ public class Player : MonoBehaviour
             GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(audioClips[4]);
         fadePanel.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(3.2f);        
+        yield return new WaitForSeconds(3.2f);
         FinishLevel();
+
+        if (gc.unlockedLevels == 4)
+            gc.unlockedLevels = 4;
+        else
+            gc.unlockedLevels++;
     }
     IEnumerator PlayOhNo()
     {       
@@ -297,8 +303,11 @@ public class Player : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
         fadePanel.SetTrigger("FadeOut");
         gameObject.transform.localScale = new Vector3(.222f,.222f,.222f);
-        yield return new WaitForSeconds(1.5f);
-        gc.lives--;
+        yield return new WaitForSeconds(2f);
+        //gc.lives--;
+        
+        if(gc.lives<0)
+            gc.GameOver();
         transform.position = new Vector3(.59f, -.4f, 0f);
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }

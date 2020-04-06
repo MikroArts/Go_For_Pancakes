@@ -5,7 +5,7 @@ using UnityEngine;
 public class Vehicle : MonoBehaviour
 {
     public float speed;
-    float timer = 35f;
+    public float timer = 35f;
     void FixedUpdate()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);

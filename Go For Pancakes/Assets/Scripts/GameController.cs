@@ -13,7 +13,8 @@ public class GameController : MonoBehaviour
     public int points;
     public int health;
     public int lives;
-    
+
+    public int unlockedLevels;
     void Awake()
     {
         if (gameController == null)
@@ -39,23 +40,24 @@ public class GameController : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        //unlockedLevels++;
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void StartGame()
-    {
+    {        
         points = 0;
-        lives = 3;
-        health = 4;
+        lives = 2;
+        health = 5;
         SceneManager.LoadScene(1);
     }
 
     internal void GameOver()
     {
         points = 0;
-        lives = 3;
-        health = 4;
-        SceneManager.LoadScene(5);
+        lives = 2;
+        health = 5;
+        SceneManager.LoadScene("GameOver");
     }
 
     public void ToggleSound()
@@ -85,5 +87,13 @@ public class GameController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+    }
+
+    public void SelectLevel(int levelIndex)
+    {
+        points = 0;
+        lives = 2;
+        health = 5;
+        SceneManager.LoadScene(levelIndex);
     }
 }

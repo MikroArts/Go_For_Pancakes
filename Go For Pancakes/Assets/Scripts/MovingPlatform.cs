@@ -15,7 +15,14 @@ public class MovingPlatform : MonoBehaviour
 
     void FixedUpdate()
     {
-        nextPos = (transform.position == pos1.position) ? pos2.position : pos1.position;
+        if (transform.position == pos1.position)
+        {
+            nextPos = pos2.position;
+        }
+        if (transform.position == pos2.position)
+        {
+            nextPos = pos1.position;
+        }
 
         transform.position = Vector2.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
     }
@@ -27,17 +34,7 @@ public class MovingPlatform : MonoBehaviour
             col.transform.parent = transform;
         }
     }
-    void OnTriggerStay2D(Collider2D col)
-    {
-        if (col.CompareTag("Player"))
-        {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                col.transform.parent = null;
-            }
-        }
-        
-    }
+
     void OnTriggerExit2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
