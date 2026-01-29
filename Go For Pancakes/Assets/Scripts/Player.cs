@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,12 +21,15 @@ public class Player : MonoBehaviour
     public Sprite book;
     public GameObject bookUI;
 
-    [Header("Player Stats Data")]    
+    [Header("Player Stats Data")]
     float moveInput;
     public float jumpForce;
     public float speed;
     bool isGrounded;
-    
+    private float currentInput = 0f;
+    private float currentVelocity = 0f;
+    private float smoothTime = 0.0f;
+
     [Header("Text Data")]
     public Text livesText;
 
@@ -56,9 +57,11 @@ public class Player : MonoBehaviour
     public RectTransform cloud;
     public float idleTime;
     private bool isIdle;
+
+    public PlayerInput inputActions;
     void Start()
     {
-        gc = GameObject.Find("GameController").GetComponent<GameController>();        
+        gc = GameController.gameController;
         numOfHearts = gc.health;
         numOfBooks = gc.points;
         rb = GetComponent<Rigidbody2D>();
@@ -67,18 +70,25 @@ public class Player : MonoBehaviour
         isMovable = true;
         idleTime = 6;
     }
+    private void Awake()
+    {
+        inputActions = new PlayerInput();
+        inputActions.Player.Enable();
+    }
     void Update()
     {
-        if (moveInput == 0 && isGrounded && !(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)))
+        Vector2 moveVector = inputActions.Player.Move.ReadValue<Vector2>();
+
+        if (moveInput == 0 && isGrounded && !(moveVector.y < 0))
         {
             idleTime -= Time.deltaTime;
-            
-            
+
+
             if (idleTime <= 0)
             {
                 cloud.localScale = new Vector3(1, 1, 1);
                 cloud.localEulerAngles = new Vector3(0, 0, 0);
-            }            
+            }
         }
         else
         {
@@ -104,7 +114,7 @@ public class Player : MonoBehaviour
             gc.health = 0;
             gameObject.transform.localScale = new Vector3(.01f, .01f, .01f);
             dieParticle.Play();
-            StartCoroutine(PlayOhNo());                   
+            StartCoroutine(PlayOhNo());
             return;
         }
 
@@ -117,8 +127,13 @@ public class Player : MonoBehaviour
             if (timer <= 0)
                 timer = 0;
         }
-        
+
         livesText.text = "h" + gc.lives;
+
+        if (inputActions.Player.Pause.WasPressedThisFrame())
+        {
+            GameController.gameController.Pause();
+        }
     }
 
     private void FillBooks()
@@ -145,10 +160,12 @@ public class Player : MonoBehaviour
     }
 
     private void Move()
-    { 
+    {
+        print(currentInput);
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
-
-        moveInput = (isMovable) ? Input.GetAxis("Horizontal") : 0 ;
+        float targetInput = inputActions.Player.Move.ReadValue<Vector2>().x;
+        currentInput = Mathf.SmoothDamp(currentInput, targetInput, ref currentVelocity, smoothTime);
+        moveInput = (isMovable) ? currentInput/* Input.GetAxis("Horizontal")*/ : 0;
 
         if (moveInput == 0)
         {
@@ -158,31 +175,31 @@ public class Player : MonoBehaviour
         else
         {
             PlayParticle();
-            rb.velocity = new Vector2(moveInput * speed * Time.deltaTime, rb.velocity.y);            
+            rb.linearVelocity = new Vector2(moveInput * speed * Time.deltaTime, rb.linearVelocity.y);
             anim.SetBool("isRide", true);
-            
+
             if (!trotinet.GetComponent<AudioSource>().isPlaying)
                 trotinet.GetComponent<AudioSource>().PlayOneShot(trotinetSound);
-            
+
             transform.eulerAngles = (moveInput < 0) ? new Vector3(transform.rotation.x, 180f, transform.rotation.z) : new Vector3(transform.rotation.x, 0, transform.rotation.z);
         }
     }
     private void Jump()
     {
-        if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && isGrounded && Time.timeScale > 0)
+        if ((inputActions.Player.Jump.WasPerformedThisFrame()) && isGrounded && Time.timeScale > 0)
         {
             anim.SetTrigger("isJump");
             PlayParticle();
-            rb.velocity = Vector2.up * jumpForce;            
+            rb.linearVelocity = Vector2.up * jumpForce;
             GetComponent<AudioSource>().PlayOneShot(audioClips[3]);
-        }        
+        }
     }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Book"))
         {
             bookUI.GetComponent<Animator>().SetTrigger("isCollect");
-            gc.points++;            
+            gc.points++;
             if (gc.points == 5)
             {
                 GetComponent<AudioSource>().PlayOneShot(audioClips[5]);
@@ -204,11 +221,11 @@ public class Player : MonoBehaviour
                 heartUI.GetComponent<Animator>().SetTrigger("isLiveUp");
                 gc.lives++;
                 gc.health = 1;
-            }                
+            }
             Destroy(col.gameObject);
             GetComponent<AudioSource>().PlayOneShot(audioClips[1]);
         }
-                
+
         if (col.CompareTag("Enemy"))
         {
             if (timer <= 0)
@@ -252,11 +269,11 @@ public class Player : MonoBehaviour
                 gc.health -= 5;
                 heartUI.GetComponent<Animator>().SetTrigger("isCollect");
                 StartCoroutine(PlayLoseLife());
-            }            
+            }
         }
     }
 
-    
+
 
     private void FinishLevel()
     {
@@ -284,7 +301,7 @@ public class Player : MonoBehaviour
             gc.unlockedLevels++;
     }
     IEnumerator PlayOhNo()
-    {       
+    {
         yield return new WaitForSeconds(.1f);
         if (!GetComponent<AudioSource>().isPlaying)
             GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
@@ -302,25 +319,30 @@ public class Player : MonoBehaviour
             GetComponent<AudioSource>().Stop();
         GetComponent<AudioSource>().PlayOneShot(audioClips[6]);
         fadePanel.SetTrigger("FadeOut");
-        gameObject.transform.localScale = new Vector3(.222f,.222f,.222f);
+        gameObject.transform.localScale = new Vector3(.222f, .222f, .222f);
         yield return new WaitForSeconds(2f);
         //gc.lives--;
-        
-        if(gc.lives<0)
+
+        if (gc.lives < 0)
             gc.GameOver();
         transform.position = new Vector3(.59f, -.4f, 0f);
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
-    
+
     IEnumerator ShowEnemyCloud(Collider2D col)
     {
         col.GetComponent<Enemy>().cloud.localScale = new Vector3(1, 1, 1);
         yield return new WaitForSeconds(1f);
         col.GetComponent<Enemy>().cloud.localScale = Vector3.zero;
     }
-    
+
     void PlayParticle()
     {
         smoke.Play();
+    }
+
+    private void OnDestroy()
+    {
+        inputActions.Player.Disable();
     }
 }

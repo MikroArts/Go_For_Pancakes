@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FaceImageToCamera : MonoBehaviour
 {
@@ -8,11 +6,11 @@ public class FaceImageToCamera : MonoBehaviour
 
     void Start()
     {
-        lookTarget = GameObject.FindGameObjectWithTag("GameController");
+        lookTarget = GameController.gameController.gameObject;
     }
 
     void LateUpdate()
     {
-        transform.eulerAngles = Vector3.zero;   
+        transform.eulerAngles = Vector3.zero;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class LevelSelector : MonoBehaviour
 
     void Start()
     {
-        gc = GameObject.Find("GameController").GetComponent<GameController>();        
+        gc = GameController.gameController;
     }
     public void OpenListOfLevels()
     {

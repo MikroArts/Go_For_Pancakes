@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -8,30 +6,32 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed = 2f;
     Animator anim;
     public Vector3 offset;
-
+    Player player;
     void Start()
     {
+        player = GameObject.Find("Sole").GetComponent<Player>();
+
         anim = GetComponentInChildren<Animator>();
         if (GameObject.FindGameObjectWithTag("Player"))
             target = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void FixedUpdate()
     {
-        if(target)
+        if (target)
         {
             Vector2 smoothPos = Vector2.Lerp(transform.position, target.position + offset, smoothSpeed * Time.deltaTime);
             transform.position = smoothPos;
         }
 
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        if (player.inputActions.Player.Move.ReadValue<Vector2>().y < 0)
         {
             offset = new Vector3(0, -3f, 0);
         }
         else
         {
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (player.inputActions.Player.Move.ReadValue<Vector2>().x > 0)
                 offset = new Vector3(1f, 1.5f, 0);
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            else if (player.inputActions.Player.Move.ReadValue<Vector2>().x < 0)
                 offset = new Vector3(-1f, 1.5f, 0);
             else
                 offset = new Vector3(0, 1.5f, 0);

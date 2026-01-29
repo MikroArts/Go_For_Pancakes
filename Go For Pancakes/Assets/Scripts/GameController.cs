@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    static GameController gameController;
+    public static GameController gameController;
     public int sceneIndex;
-    
+
     [Header("Player Stats")]
     public int points;
     public int health;
@@ -28,24 +25,19 @@ public class GameController : MonoBehaviour
         }
         Application.targetFrameRate = -1;
     }
-   
+
     void Update()
     {
         sceneIndex = (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame") ? 1 : SceneManager.GetActiveScene().buildIndex + 1;
-        //if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "FinishGame")
-
-        //else
-        //    sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     public void LoadNextLevel()
     {
-        //unlockedLevels++;
         SceneManager.LoadScene(sceneIndex);
     }
 
     public void StartGame()
-    {        
+    {
         points = 0;
         lives = 2;
         health = 5;
@@ -62,9 +54,9 @@ public class GameController : MonoBehaviour
 
     public void ToggleSound()
     {
-        AudioListener.volume = (AudioListener.volume == 0) ? 1f : 0;         
+        AudioListener.volume = (AudioListener.volume == 0) ? 1f : 0;
     }
-    
+
     public void QuitGame()
     {
         Application.Quit();
@@ -74,7 +66,7 @@ public class GameController : MonoBehaviour
     {
         if (Time.timeScale > 0f)
         {
-            GameObject.Find("PausePanel").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);           
+            GameObject.Find("PausePanel").GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             Time.timeScale = 0f;
         }
         else

@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Vehicle : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class Vehicle : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }    
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.CompareTag("Player"))
@@ -26,7 +25,8 @@ public class Vehicle : MonoBehaviour
     {
         if (col.CompareTag("Player"))
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+
+            if (col.GetComponent<Player>().inputActions.Player.Jump.phase == InputActionPhase.Performed)
             {
                 col.transform.parent = null;
             }
